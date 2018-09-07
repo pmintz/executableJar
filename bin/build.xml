@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<project name="executablejar">
+
+	<target name="compile" description="Compile Source Java Files">
+		<mkdir dir="../classes"/>
+		<javac destdir="../classes">
+			<src path="ExecutableJar"></src>
+		</javac>
+	</target>
+	
+	<!--jar destfile="executablejar.jar" description="Package class files into Jar"></jar-->
+	<target name="jar" depends="compile" description="Compile Source Java Files">
+		<jar destfile="executablejar.jar">
+	    	<!--fileset dir="../classes"/-->
+	    	<!--fileset dir="../META-INF/"/-->
+           <fileset dir="../classes" includes="**/*.class"/>
+			    <manifest>
+			        <attribute name="Main-Class"
+			              value="executablejar.ExecutableJar"/>
+			    </manifest>
+		</jar>
+	</target>
+</project>
